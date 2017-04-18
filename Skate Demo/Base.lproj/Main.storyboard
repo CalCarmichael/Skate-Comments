@@ -561,7 +561,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-c2-4aG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="jR9-f4-5Bq" customClass="CommentTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
@@ -610,15 +610,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-LI-SN7">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-Ha-CAR">
+                                        <rect key="frame" x="8" y="8" width="275" height="34"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DMY-nB-ZFa"/>
+                                    <constraint firstItem="sp9-Ha-CAR" firstAttribute="leading" secondItem="b6D-LI-SN7" secondAttribute="leading" constant="8" id="Ih5-3L-ooW"/>
+                                    <constraint firstItem="sp9-Ha-CAR" firstAttribute="top" secondItem="b6D-LI-SN7" secondAttribute="top" constant="8" id="LU1-lC-0r3"/>
+                                    <constraint firstItem="sp9-Ha-CAR" firstAttribute="centerX" secondItem="b6D-LI-SN7" secondAttribute="centerX" id="bZ6-xW-EH1"/>
+                                    <constraint firstAttribute="bottom" secondItem="sp9-Ha-CAR" secondAttribute="bottom" constant="8" id="fEy-nB-TFG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7V2-c2-4aG" secondAttribute="trailing" id="37R-PF-WWW"/>
                             <constraint firstItem="7V2-c2-4aG" firstAttribute="top" secondItem="xDj-O0-1Lf" secondAttribute="top" id="O8i-8b-4FL"/>
                             <constraint firstItem="7V2-c2-4aG" firstAttribute="leading" secondItem="xDj-O0-1Lf" secondAttribute="leading" id="PKQ-zT-Gvi"/>
-                            <constraint firstAttribute="bottom" secondItem="7V2-c2-4aG" secondAttribute="bottom" id="zVR-ln-DTF"/>
+                            <constraint firstItem="b6D-LI-SN7" firstAttribute="top" secondItem="7V2-c2-4aG" secondAttribute="bottom" id="QnG-pc-4f8"/>
+                            <constraint firstItem="hsH-Ap-pdN" firstAttribute="top" secondItem="b6D-LI-SN7" secondAttribute="bottom" id="cFy-Jc-euH"/>
+                            <constraint firstItem="b6D-LI-SN7" firstAttribute="leading" secondItem="xDj-O0-1Lf" secondAttribute="leading" id="nvD-UI-Dgc"/>
+                            <constraint firstAttribute="trailing" secondItem="b6D-LI-SN7" secondAttribute="trailing" id="zL1-5O-OOf"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8X-J3-51h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
