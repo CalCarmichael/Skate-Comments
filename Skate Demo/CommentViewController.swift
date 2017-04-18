@@ -7,15 +7,43 @@
 //
 
 import UIKit
+import Firebase
+import ProgressHUD
 
 class CommentViewController: UIViewController {
     
+    
+    @IBOutlet weak var commentTextField: UITextField!
+    
+    @IBOutlet weak var sendButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Handles all the send button UI - changing from light gray to black etc
+        
+        empty()
+        handleTextField()
+       
+    }
+    
+    
+    func handleTextField() {
+        
+        commentTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+    }
+    
+    func textFieldDidChange() {
+        if let commentTextField = commentTextField.text, !commentTextField.isEmpty {
+            sendButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+            sendButton.isEnabled = true
+            return
+        }
+                      
+        sendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+        sendButton.isEnabled = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,15 +56,39 @@ class CommentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func sendButton_TouchUpInside(_ sender: Any) {
+    
+        let ref = FIRDatabase.database().reference()
+        let commentsReference = ref.child("comments")
+        let newCommentId = commentsReference.childByAutoId().key
+        let newCommentReference = commentsReference.child(newCommentId)
+        guard let currentUser = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        let currentUserId = currentUser.uid
+        newCommentReference.setValue(["uid": currentUserId, "commentText": commentTextField.text!], withCompletionBlock: {
+            (error, ref) in
+            
+            if error != nil {
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+          
+            self.empty()
+            
+        })
+        
+    
     }
-    */
+    
+    //Empty out comment message after comment sent
+    
+    func empty() {
+        
+        self.commentTextField.text = ""
+        self.sendButton.isEnabled = false
+        self.sendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+    }
+    
 
 }
