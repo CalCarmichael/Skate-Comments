@@ -562,7 +562,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-c2-4aG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="jR9-f4-5Bq" customClass="CommentTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -613,19 +613,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-LI-SN7">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-Ha-CAR">
-                                        <rect key="frame" x="8" y="8" width="275" height="34"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comment:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-Ha-CAR">
+                                        <rect key="frame" x="8" y="8" width="315" height="34"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-20-ECr">
+                                        <rect key="frame" x="331" y="8" width="36" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="ijn-21-kHW"/>
+                                        </constraints>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EUT-20-ECr" secondAttribute="trailing" constant="8" id="0yK-d5-fuw"/>
+                                    <constraint firstItem="EUT-20-ECr" firstAttribute="top" secondItem="b6D-LI-SN7" secondAttribute="top" constant="8" id="8dA-NP-iRw"/>
+                                    <constraint firstItem="EUT-20-ECr" firstAttribute="leading" secondItem="sp9-Ha-CAR" secondAttribute="trailing" constant="8" id="Amq-U7-N9h"/>
                                     <constraint firstAttribute="height" constant="50" id="DMY-nB-ZFa"/>
                                     <constraint firstItem="sp9-Ha-CAR" firstAttribute="leading" secondItem="b6D-LI-SN7" secondAttribute="leading" constant="8" id="Ih5-3L-ooW"/>
+                                    <constraint firstAttribute="bottom" secondItem="EUT-20-ECr" secondAttribute="bottom" constant="8" id="IrG-9s-yLk"/>
                                     <constraint firstItem="sp9-Ha-CAR" firstAttribute="top" secondItem="b6D-LI-SN7" secondAttribute="top" constant="8" id="LU1-lC-0r3"/>
-                                    <constraint firstItem="sp9-Ha-CAR" firstAttribute="centerX" secondItem="b6D-LI-SN7" secondAttribute="centerX" id="bZ6-xW-EH1"/>
                                     <constraint firstAttribute="bottom" secondItem="sp9-Ha-CAR" secondAttribute="bottom" constant="8" id="fEy-nB-TFG"/>
                                 </constraints>
                             </view>
