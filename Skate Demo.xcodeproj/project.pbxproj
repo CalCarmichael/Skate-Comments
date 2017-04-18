@@ -15,7 +15,7 @@
 		9F47636E1E93C00200D74370 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47636D1E93C00200D74370 /* Config.swift */; };
 		9F4763741E93DCCE00D74370 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4763731E93DCCE00D74370 /* CameraViewController.swift */; };
 		9F54FBE51EA660AC00CDAEA1 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54FBE41EA660AC00CDAEA1 /* CommentViewController.swift */; };
-		9F54FBE71EA660C100CDAEA1 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54FBE61EA660C100CDAEA1 /* CommentTableViewCell.swift */; };
+		9F54FBE91EA661C800CDAEA1 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F54FBE81EA661C800CDAEA1 /* CommentTableViewCell.swift */; };
 		9F56A68B1E929BD900E8EDB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56A68A1E929BD900E8EDB9 /* SignInViewController.swift */; };
 		9F56A68D1E929C8100E8EDB9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56A68C1E929C8100E8EDB9 /* SignUpViewController.swift */; };
 		9F8D373C1E82A7DD003E36CB /* Skatepark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D373B1E82A7DD003E36CB /* Skatepark.swift */; };
@@ -43,7 +43,7 @@
 		9F47636D1E93C00200D74370 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		9F4763731E93DCCE00D74370 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9F54FBE41EA660AC00CDAEA1 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
-		9F54FBE61EA660C100CDAEA1 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		9F54FBE81EA661C800CDAEA1 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		9F56A68A1E929BD900E8EDB9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9F56A68C1E929C8100E8EDB9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9F8D373B1E82A7DD003E36CB /* Skatepark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skatepark.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE47D781E9693830030E817 /* FeedTableViewCell.swift */,
-				9F54FBE61EA660C100CDAEA1 /* CommentTableViewCell.swift */,
+				9F54FBE81EA661C800CDAEA1 /* CommentTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				9F3EE3DC1E9D099000D0BC69 /* User.swift in Sources */,
 				9FE94C181E796B75009B7B3F /* AppDelegate.swift in Sources */,
 				9FE47D791E9693830030E817 /* FeedTableViewCell.swift in Sources */,
-				9F54FBE71EA660C100CDAEA1 /* CommentTableViewCell.swift in Sources */,
+				9F54FBE91EA661C800CDAEA1 /* CommentTableViewCell.swift in Sources */,
 				9F47636E1E93C00200D74370 /* Config.swift in Sources */,
 				9F4763691E93AE1E00D74370 /* ProfileViewController.swift in Sources */,
 				9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */,

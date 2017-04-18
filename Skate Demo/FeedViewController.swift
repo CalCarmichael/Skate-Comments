@@ -80,6 +80,14 @@ class FeedViewController: UIViewController {
         
     }
     
+
+    @IBAction func button_TouchUpInside(_ sender: Any) {
+    self.performSegue(withIdentifier: "commentSegue", sender: nil)
+    
+    }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -89,27 +97,7 @@ class FeedViewController: UIViewController {
     
     //Look up the right user on the database (escaping means having no input return nothing)
     
-    func getUser(uid: String, completed: @escaping () -> Void) {
-        
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String: Any] {
-                
-                //Retrieving from the database - Model User created class
-                
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-               
-                
-            }
-            
-        })
-
-        
     }
-    
-  }
     
 }
 
