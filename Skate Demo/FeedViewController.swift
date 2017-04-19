@@ -39,41 +39,29 @@ class FeedViewController: UIViewController {
         
         activityIndicatorView.startAnimating()
         
-        FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
+        //PostApi retreiving posts from the database
+        
+        Api.Post.observePosts { (post) in
+            self.getUser(uid: post.uid!, completed: {
             
-            if let dict = snapshot.value as? [String: Any] {
+                self.posts.append(post)
                 
-                //Retrieving from the database - post Model created class
+                self.activityIndicatorView.stopAnimating()
                 
-                let newPost = Post.transformPostPhoto(dict: dict, key: snapshot.key)
-                
-                self.getUser(uid: newPost.uid!, completed: {
-                    
-                    self.posts.append(newPost)
-                    
-                    self.activityIndicatorView.stopAnimating()
-                    
-                    self.tableView.reloadData()
-                    
-                })
-                    
-               
-                
-            }
+                self.tableView.reloadData()
             
+            })
         }
         
     }
     
     func getUser(uid: String, completed: @escaping () -> Void) {
         
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String : Any] {
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-            }
+        Api.User.observeUser(withId: uid, completion: {
+            user in
+            self.users.append(user)
+            completed()
+            
         })
         
     }

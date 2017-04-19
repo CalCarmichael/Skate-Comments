@@ -70,48 +70,34 @@ class CommentViewController: UIViewController {
     
     func loadComments() {
         
-        let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postId)
-        postCommentRef.observe(.childAdded, with: {
+        
+        
+         Api.Post_Comment.REF_POST_COMMENTS.child(self.postId).observe(.childAdded, with: {
             snapshot in
-            print("observe key")
-            print(snapshot.key)
-            FIRDatabase.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: {
-                snapshotComment in
+            Api.Comment.observeComments(withPostId: snapshot.key, completion: {
+                comment in
                 
-                if let dict = snapshotComment.value as? [String: Any] {
+                self.getUser(uid: comment.uid!, completed: {
                     
-                    //Retrieving from the database - comment Model created class
+                    self.comments.append(comment)
                     
-                    let newComment = Comment.transformComment(dict: dict)
-                    
-                    self.getUser(uid: newComment.uid!, completed: {
-                        
-                        self.comments.append(newComment)
-                        
-                        self.tableView.reloadData()
-                        
-                    })
-                    
-                    
-                    
-                }
+                    self.tableView.reloadData()
+                
             })
+            
+            })
+         
         })
         
     }
     
     func getUser(uid: String, completed: @escaping () -> Void) {
         
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String : Any] {
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-            }
+        Api.User.observeUser(withId: uid, completion: {
+            user in
+            self.users.append(user)
+            completed()
         })
-        
-        
         
     }
     
@@ -151,8 +137,7 @@ class CommentViewController: UIViewController {
     
     @IBAction func sendButton_TouchUpInside(_ sender: Any) {
         
-        let ref = FIRDatabase.database().reference()
-        let commentsReference = ref.child("comments")
+        let commentsReference = Api.Comment.REF_COMMENTS
         let newCommentId = commentsReference.childByAutoId().key
         let newCommentReference = commentsReference.child(newCommentId)
         guard let currentUser = FIRAuth.auth()?.currentUser else {
@@ -168,7 +153,7 @@ class CommentViewController: UIViewController {
             }
             
             
-            let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postId).child(newCommentId)
+            let postCommentRef = Api.Post_Comment.REF_POST_COMMENTS.child(self.postId).child(newCommentId)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
                     ProgressHUD.showError(error!.localizedDescription)

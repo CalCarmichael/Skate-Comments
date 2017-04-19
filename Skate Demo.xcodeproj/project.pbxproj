@@ -21,6 +21,11 @@
 		9F8D373C1E82A7DD003E36CB /* Skatepark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D373B1E82A7DD003E36CB /* Skatepark.swift */; };
 		9F9EAFA41E9E63BD00921147 /* SaveSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAFA31E9E63BD00921147 /* SaveSpotViewController.swift */; };
 		9FB108611EA7973600AD5AF6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB108601EA7973600AD5AF6 /* Comment.swift */; };
+		9FB108651EA7BD9200AD5AF6 /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB108641EA7BD9200AD5AF6 /* PostApi.swift */; };
+		9FB108671EA7C3A500AD5AF6 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB108661EA7C3A500AD5AF6 /* UserApi.swift */; };
+		9FB108691EA7C59300AD5AF6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB108681EA7C59300AD5AF6 /* Api.swift */; };
+		9FB1086B1EA7C65300AD5AF6 /* CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1086A1EA7C65300AD5AF6 /* CommentApi.swift */; };
+		9FB1086D1EA7C8C900AD5AF6 /* Post_CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1086C1EA7C8C900AD5AF6 /* Post_CommentApi.swift */; };
 		9FBCA91B1E7C470700ADE283 /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCA91A1E7C470700ADE283 /* SideBarTableViewController.swift */; };
 		9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */; };
 		9FD9D0A31E79711600CE3FA4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD9D0A21E79711600CE3FA4 /* MapKit.framework */; };
@@ -50,6 +55,11 @@
 		9F8D373B1E82A7DD003E36CB /* Skatepark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skatepark.swift; sourceTree = "<group>"; };
 		9F9EAFA31E9E63BD00921147 /* SaveSpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSpotViewController.swift; sourceTree = "<group>"; };
 		9FB108601EA7973600AD5AF6 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		9FB108641EA7BD9200AD5AF6 /* PostApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
+		9FB108661EA7C3A500AD5AF6 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		9FB108681EA7C59300AD5AF6 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		9FB1086A1EA7C65300AD5AF6 /* CommentApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentApi.swift; sourceTree = "<group>"; };
+		9FB1086C1EA7C8C900AD5AF6 /* Post_CommentApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post_CommentApi.swift; sourceTree = "<group>"; };
 		9FBCA91A1E7C470700ADE283 /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
 		9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		9FD9D0A21E79711600CE3FA4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -193,6 +203,11 @@
 				9FE94C171E796B75009B7B3F /* AppDelegate.swift */,
 				9F47636B1E93B42900D74370 /* AuthService.swift */,
 				9F47636D1E93C00200D74370 /* Config.swift */,
+				9FB108641EA7BD9200AD5AF6 /* PostApi.swift */,
+				9FB108661EA7C3A500AD5AF6 /* UserApi.swift */,
+				9FB108681EA7C59300AD5AF6 /* Api.swift */,
+				9FB1086C1EA7C8C900AD5AF6 /* Post_CommentApi.swift */,
+				9FB1086A1EA7C65300AD5AF6 /* CommentApi.swift */,
 				9FE47D7A1E96938E0030E817 /* Views */,
 				9F3489701E96568A003A85BE /* Model */,
 				9F63C05B1E8BB8A500E4E39B /* Login */,
@@ -341,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB108651EA7BD9200AD5AF6 /* PostApi.swift in Sources */,
 				9F4763741E93DCCE00D74370 /* CameraViewController.swift in Sources */,
 				9FE94C1A1E796B75009B7B3F /* ViewController.swift in Sources */,
 				9F56A68D1E929C8100E8EDB9 /* SignUpViewController.swift in Sources */,
@@ -350,11 +366,15 @@
 				9F34896F1E965687003A85BE /* Post.swift in Sources */,
 				9F47636C1E93B42900D74370 /* AuthService.swift in Sources */,
 				9F56A68B1E929BD900E8EDB9 /* SignInViewController.swift in Sources */,
+				9FB1086D1EA7C8C900AD5AF6 /* Post_CommentApi.swift in Sources */,
 				9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */,
 				9F3EE3DC1E9D099000D0BC69 /* User.swift in Sources */,
+				9FB108671EA7C3A500AD5AF6 /* UserApi.swift in Sources */,
 				9FE94C181E796B75009B7B3F /* AppDelegate.swift in Sources */,
 				9FE47D791E9693830030E817 /* FeedTableViewCell.swift in Sources */,
+				9FB1086B1EA7C65300AD5AF6 /* CommentApi.swift in Sources */,
 				9F54FBE91EA661C800CDAEA1 /* CommentTableViewCell.swift in Sources */,
+				9FB108691EA7C59300AD5AF6 /* Api.swift in Sources */,
 				9F47636E1E93C00200D74370 /* Config.swift in Sources */,
 				9F4763691E93AE1E00D74370 /* ProfileViewController.swift in Sources */,
 				9FB108611EA7973600AD5AF6 /* Comment.swift in Sources */,
