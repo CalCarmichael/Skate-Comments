@@ -541,7 +541,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="90t-fQ-88h" id="w3N-7r-s1X"/>
                         <outlet property="tableView" destination="Bd3-pk-HWT" id="tSG-Hd-J8c"/>
-                        <segue destination="LhZ-Cg-epj" kind="show" identifier="commentSegue" id="wOr-ZF-i53"/>
+                        <segue destination="LhZ-Cg-epj" kind="show" identifier="CommentSegue" id="wOr-ZF-i53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wl3-lh-H2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,13 +562,13 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-c2-4aG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="80" id="jR9-f4-5Bq" customClass="CommentTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="80" id="jR9-f4-5Bq" customClass="CommentTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jR9-f4-5Bq" id="foF-g1-3kd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d6g-1B-beg">
@@ -660,6 +660,7 @@
                     <connections>
                         <outlet property="commentTextField" destination="sp9-Ha-CAR" id="8kg-cw-fHF"/>
                         <outlet property="sendButton" destination="EUT-20-ECr" id="QGD-5g-IG5"/>
+                        <outlet property="tableView" destination="7V2-c2-4aG" id="bl1-pU-3z6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8X-J3-51h" userLabel="First Responder" sceneMemberID="firstResponder"/>

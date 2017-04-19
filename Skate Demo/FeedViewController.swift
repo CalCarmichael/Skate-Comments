@@ -82,7 +82,7 @@ class FeedViewController: UIViewController {
     
 
     @IBAction func button_TouchUpInside(_ sender: Any) {
-    self.performSegue(withIdentifier: "commentSegue", sender: nil)
+    self.performSegue(withIdentifier: "CommentSegue", sender: nil)
     
     }
     

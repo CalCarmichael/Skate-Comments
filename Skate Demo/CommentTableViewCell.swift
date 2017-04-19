@@ -16,16 +16,47 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var commentLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    
+    var comment: Comment? {
+        didSet {
+            
+            updateViewComment()
+            
+            
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    var user: User? {
+        didSet {
+            
+            setUserInfo()
+            
+        }
     }
-
-}
+    
+    func updateViewComment() {
+        commentLabel.text = comment?.commentText
+    }
+    
+    func setUserInfo() {
+        nameLabel.text = user?.username
+        if let photoUrlString = user?.profileImageUrl {
+            let photoUrl = URL(string: photoUrlString)
+            profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholderImage"))
+        }
+        
+    }
+        
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            // Initialization code
+        }
+        
+        override func setSelected(_ selected: Bool, animated: Bool) {
+            super.setSelected(selected, animated: animated)
+            
+            // Configure the view for the selected state
+            
+        }
+    }

@@ -20,6 +20,7 @@
 		9F56A68D1E929C8100E8EDB9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56A68C1E929C8100E8EDB9 /* SignUpViewController.swift */; };
 		9F8D373C1E82A7DD003E36CB /* Skatepark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8D373B1E82A7DD003E36CB /* Skatepark.swift */; };
 		9F9EAFA41E9E63BD00921147 /* SaveSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAFA31E9E63BD00921147 /* SaveSpotViewController.swift */; };
+		9FB108611EA7973600AD5AF6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB108601EA7973600AD5AF6 /* Comment.swift */; };
 		9FBCA91B1E7C470700ADE283 /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCA91A1E7C470700ADE283 /* SideBarTableViewController.swift */; };
 		9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */; };
 		9FD9D0A31E79711600CE3FA4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD9D0A21E79711600CE3FA4 /* MapKit.framework */; };
@@ -48,6 +49,7 @@
 		9F56A68C1E929C8100E8EDB9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9F8D373B1E82A7DD003E36CB /* Skatepark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skatepark.swift; sourceTree = "<group>"; };
 		9F9EAFA31E9E63BD00921147 /* SaveSpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveSpotViewController.swift; sourceTree = "<group>"; };
+		9FB108601EA7973600AD5AF6 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		9FBCA91A1E7C470700ADE283 /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
 		9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		9FD9D0A21E79711600CE3FA4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -109,6 +111,7 @@
 			children = (
 				9F34896E1E965687003A85BE /* Post.swift */,
 				9F3EE3DB1E9D099000D0BC69 /* User.swift */,
+				9FB108601EA7973600AD5AF6 /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				9F54FBE91EA661C800CDAEA1 /* CommentTableViewCell.swift in Sources */,
 				9F47636E1E93C00200D74370 /* Config.swift in Sources */,
 				9F4763691E93AE1E00D74370 /* ProfileViewController.swift in Sources */,
+				9FB108611EA7973600AD5AF6 /* Comment.swift in Sources */,
 				9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */,
 				9F8D373C1E82A7DD003E36CB /* Skatepark.swift in Sources */,
 			);

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class FeedTableViewCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -22,12 +22,12 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
-    //Created an instance variable 
+    //Created an instance variable
     
     var post: Post? {
         didSet {
             
-        updateViewPost()
+            updateViewPost()
             
             
         }
@@ -53,22 +53,22 @@ class FeedTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: photoUrl)
             
         }
-
-        setUserInfo()
-            
-        }
-    
-        //Grabbing all user information its observing and retrieving from specific user uid
         
-        func setUserInfo() {
+        
+        
+    }
+    
+    //Grabbing all user information its observing and retrieving from specific user uid
+    
+    func setUserInfo() {
         
         usernameLabel.text = user?.username
-            if let photoUrlString = user?.profileImageUrl {
-                let photoUrl = URL(string: photoUrlString)
-                profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholderImage"))
-            }
-            
+        if let photoUrlString = user?.profileImageUrl {
+            let photoUrl = URL(string: photoUrlString)
+            profileImageView.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "placeholderImage"))
         }
+        
+    }
     
     
     override func awakeFromNib() {
@@ -85,11 +85,11 @@ class FeedTableViewCell: UITableViewCell {
         print("1111")
         profileImageView.image = UIImage(named: "placeholderImage")
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

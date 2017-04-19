@@ -17,13 +17,20 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     let postId = "-Ki5D10aIs2oQjC189vZ"
+    
+    var comments = [Comment]()
+    var users = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Handles all the send button UI - changing from light gray to black etc
-        
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         empty()
         handleTextField()
         loadComments()
@@ -39,9 +46,41 @@ class CommentViewController: UIViewController {
             print(snapshot.key)
             FIRDatabase.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: {
                 snapshotComment in
-                print(snapshotComment.value)
+                
+                if let dict = snapshotComment.value as? [String: Any] {
+                    
+                    //Retrieving from the database - comment Model created class
+                    
+                    let newComment = Comment.transformComment(dict: dict)
+                    
+                    self.getUser(uid: newComment.uid!, completed: {
+                        
+                        self.comments.append(newComment)
+                        
+                        self.tableView.reloadData()
+                        
+                    })
+                    
+                    
+                    
+                }
             })
         })
+        
+    }
+    
+    func getUser(uid: String, completed: @escaping () -> Void) {
+        
+        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: FIRDataEventType.value, with: {
+            snapshot in
+            if let dict = snapshot.value as? [String : Any] {
+                let user = User.transformUser(dict: dict)
+                self.users.append(user)
+                completed()
+            }
+        })
+        
+        
         
     }
     
@@ -118,3 +157,33 @@ class CommentViewController: UIViewController {
     
 
 }
+
+extension CommentViewController: UITableViewDataSource {
+    
+    //Rows in table view - returning posts
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return comments.count
+        
+    }
+    
+    //Customise rows
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Reuses the cells shown rather than uploading all of them at once
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        
+        //Posting the user information from Folder Views - FeedTableViewCell
+        
+        let comment = comments[indexPath.row]
+        let user = users[indexPath.row]
+        cell.comment = comment
+        cell.user = user
+        return cell
+    }
+    
+}
+
