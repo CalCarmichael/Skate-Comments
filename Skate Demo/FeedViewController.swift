@@ -45,7 +45,7 @@ class FeedViewController: UIViewController {
                 
                 //Retrieving from the database - post Model created class
                 
-                let newPost = Post.transformPostPhoto(dict: dict)
+                let newPost = Post.transformPostPhoto(dict: dict, key: snapshot.key)
                 
                 self.getUser(uid: newPost.uid!, completed: {
                     
@@ -76,30 +76,23 @@ class FeedViewController: UIViewController {
             }
         })
         
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentSegue" {
+            let commentVC = segue.destination as! CommentViewController
+            let postId = sender as! String
+            commentVC.postId = postId
+        }
         
     }
     
 
-    @IBAction func button_TouchUpInside(_ sender: Any) {
-    self.performSegue(withIdentifier: "CommentSegue", sender: nil)
-    
-    }
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //Keeps the tab bar on this page rather than removing in comments
-        
-        self.tabBarController?.tabBar.isHidden = false
-    
-    //Look up the right user on the database (escaping means having no input return nothing)
-    
-    }
-    
 }
+
+
+
+
 
 extension FeedViewController: UITableViewDataSource {
     
@@ -125,6 +118,7 @@ extension FeedViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         cell.post = post
         cell.user = user
+        cell.feedVC = self
         return cell
     }
     

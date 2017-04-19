@@ -13,6 +13,7 @@ class Post {
     var caption: String?
     var photoUrl: String?
     var uid: String?
+    var id: String?
     
 }
 
@@ -20,9 +21,11 @@ extension Post {
     
     //Instance method put into load posts
     
-    static func transformPostPhoto(dict: [String: Any]) -> Post {
+    static func transformPostPhoto(dict: [String: Any], key: String) -> Post {
         
         let post = Post()
+        
+        post.id = key 
         
         post.caption = dict["caption"] as? String
         

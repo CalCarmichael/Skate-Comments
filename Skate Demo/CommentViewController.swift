@@ -21,20 +21,22 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var commentConstrainToBottom: NSLayoutConstraint!
     
-    let postId = "-Ki5D10aIs2oQjC189vZ"
+    var postId: String!
     
     var comments = [Comment]()
     var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Comment Page"
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         empty()
         handleTextField()
         loadComments()
+        
+        //Keyboard for comments page. Showing and hiding and functions for animations 
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -134,6 +136,12 @@ class CommentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false 
+        
     }
     
     override func didReceiveMemoryWarning() {

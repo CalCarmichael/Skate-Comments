@@ -24,6 +24,8 @@ class FeedTableViewCell: UITableViewCell {
     
     //Created an instance variable
     
+    var feedVC: FeedViewController?
+    
     var post: Post? {
         didSet {
             
@@ -76,6 +78,21 @@ class FeedTableViewCell: UITableViewCell {
         
         usernameLabel.text = ""
         captionLabel.text = ""
+        
+        //Comment button bubble to comments page
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentView_TouchUpInside))
+        commentView.addGestureRecognizer(tapGesture)
+        commentView.isUserInteractionEnabled = true
+        
+    }
+    
+    func commentView_TouchUpInside() {
+        print("touched")
+        if let id = post?.id {
+            feedVC?.performSegue(withIdentifier: "CommentSegue", sender: id)
+
+        }
     }
     
     //Deletes all old data
