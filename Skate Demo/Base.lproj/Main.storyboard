@@ -560,7 +560,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-c2-4aG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-c2-4aG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -571,15 +571,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d6g-1B-beg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d6g-1B-beg">
                                                     <rect key="frame" x="15" y="8" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="1i8-b1-WQn"/>
                                                         <constraint firstAttribute="width" constant="50" id="stH-YD-ZWo"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGY-A3-YzO">
-                                                    <rect key="frame" x="73" y="8" width="35.5" height="16"/>
+                                                    <rect key="frame" x="73" y="8" width="36" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -593,11 +598,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="d6g-1B-beg" firstAttribute="leading" secondItem="foF-g1-3kd" secondAttribute="leading" constant="15" id="2Cj-e8-dqj"/>
-                                                <constraint firstAttribute="bottom" secondItem="0wm-Um-gRR" secondAttribute="bottom" constant="31" id="KAb-1j-uoZ"/>
                                                 <constraint firstItem="d6g-1B-beg" firstAttribute="top" secondItem="foF-g1-3kd" secondAttribute="top" constant="8" id="NOi-22-g2X"/>
                                                 <constraint firstAttribute="trailing" secondItem="0wm-Um-gRR" secondAttribute="trailing" constant="8" id="R5A-xZ-7Ip"/>
                                                 <constraint firstItem="BGY-A3-YzO" firstAttribute="leading" secondItem="d6g-1B-beg" secondAttribute="trailing" constant="8" id="YyG-pp-PFH"/>
                                                 <constraint firstItem="BGY-A3-YzO" firstAttribute="top" secondItem="d6g-1B-beg" secondAttribute="top" id="eik-wh-efC"/>
+                                                <constraint firstAttribute="bottom" secondItem="0wm-Um-gRR" secondAttribute="bottom" constant="32" id="lwn-Y6-Tp6"/>
                                                 <constraint firstItem="0wm-Um-gRR" firstAttribute="leading" secondItem="d6g-1B-beg" secondAttribute="trailing" constant="8" id="rRu-l1-RMD"/>
                                                 <constraint firstItem="0wm-Um-gRR" firstAttribute="top" secondItem="BGY-A3-YzO" secondAttribute="bottom" constant="8" id="rZs-da-9mB"/>
                                             </constraints>
@@ -658,6 +663,7 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="commentConstrainToBottom" destination="cFy-Jc-euH" id="551-9r-IC4"/>
                         <outlet property="commentTextField" destination="sp9-Ha-CAR" id="8kg-cw-fHF"/>
                         <outlet property="sendButton" destination="EUT-20-ECr" id="QGD-5g-IG5"/>
                         <outlet property="tableView" destination="7V2-c2-4aG" id="bl1-pU-3z6"/>

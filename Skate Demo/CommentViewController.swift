@@ -19,22 +19,51 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var commentConstrainToBottom: NSLayoutConstraint!
     
     let postId = "-Ki5D10aIs2oQjC189vZ"
     
     var comments = [Comment]()
     var users = [User]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
         empty()
         handleTextField()
         loadComments()
-       
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
+    
+    func keyboardWillShow(_ notification: NSNotification) {
+        print(notification)
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        print(keyboardFrame)
+        UIView.animate(withDuration: 0.25) {
+            
+            self.commentConstrainToBottom.constant = keyboardFrame!.height
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    func keyboardWillHide(_ notification: NSNotification) {
+        UIView.animate(withDuration: 0.25) {
+            self.commentConstrainToBottom.constant = 0
+            self.view.layoutIfNeeded()
+    }
+        
     }
     
     func loadComments() {
@@ -96,7 +125,7 @@ class CommentViewController: UIViewController {
             sendButton.isEnabled = true
             return
         }
-                      
+        
         sendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         sendButton.isEnabled = false
         
@@ -106,14 +135,14 @@ class CommentViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func sendButton_TouchUpInside(_ sender: Any) {
-    
+        
         let ref = FIRDatabase.database().reference()
         let commentsReference = ref.child("comments")
         let newCommentId = commentsReference.childByAutoId().key
@@ -129,7 +158,7 @@ class CommentViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-          
+            
             
             let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postId).child(newCommentId)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
@@ -140,10 +169,11 @@ class CommentViewController: UIViewController {
             })
             
             self.empty()
+            self.view.endEditing(true)
             
         })
         
-    
+        
     }
     
     //Empty out comment message after comment sent
@@ -155,7 +185,7 @@ class CommentViewController: UIViewController {
         self.sendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
     }
     
-
+    
 }
 
 extension CommentViewController: UITableViewDataSource {

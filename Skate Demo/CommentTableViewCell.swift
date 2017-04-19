@@ -50,8 +50,16 @@ class CommentTableViewCell: UITableViewCell {
         
         override func awakeFromNib() {
             super.awakeFromNib()
-            // Initialization code
+            
+            nameLabel.text = ""
+            commentLabel.text = ""
+            
         }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "placeholderImage")
+    }
         
         override func setSelected(_ selected: Bool, animated: Bool) {
             super.setSelected(selected, animated: animated)
