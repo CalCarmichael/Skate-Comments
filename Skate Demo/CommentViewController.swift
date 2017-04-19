@@ -17,6 +17,7 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    let postId = "-Ki5D10aIs2oQjC189vZ"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,23 @@ class CommentViewController: UIViewController {
         
         empty()
         handleTextField()
+        loadComments()
        
+    }
+    
+    func loadComments() {
+        
+        let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postId)
+        postCommentRef.observe(.childAdded, with: {
+            snapshot in
+            print("observe key")
+            print(snapshot.key)
+            FIRDatabase.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: {
+                snapshotComment in
+                print(snapshotComment.value)
+            })
+        })
+        
     }
     
     
@@ -74,6 +91,15 @@ class CommentViewController: UIViewController {
                 return
             }
           
+            
+            let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postId).child(newCommentId)
+            postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+            })
+            
             self.empty()
             
         })
