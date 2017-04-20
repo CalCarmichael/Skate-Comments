@@ -136,6 +136,14 @@ class CameraViewController: UIViewController {
                 return
             }
             
+            let userPostRef = Api.userPosts.REF_USER_POSTS.child(currentUserId).child(newPostId)
+            userPostRef.setValue(true, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+            })
+            
             ProgressHUD.showSuccess("Success")
             
             self.clearPost()
