@@ -57,9 +57,27 @@ class FeedTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: photoUrl)
             
         }
+
+        //Observing the like button being changed and updating from other users
         
+        Api.Post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let dict = snapshot.value as? [String: Any] {
+                let post = Post .transformPostPhoto(dict: dict, key: snapshot.key)
+                self.updateLike(post: post)
+            }
+
+        })
+       
+        Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
+            snapshot in
+            
+            if let value = snapshot.value as? Int {
+                self.likeCountButton.setTitle("\(value) Like", for: UIControlState.normal)
+            }
+            
+        })
         
-        updateLike(post: post!)
         
     }
     
@@ -67,12 +85,27 @@ class FeedTableViewCell: UITableViewCell {
     
     func updateLike(post: Post) {
         
-        print(post.isLiked)
-        
         let imageName = post.likes == nil  || !post.isLiked! ? "Like" : "Like Filled"
         
         likeImageView.image = UIImage(named: imageName)
         
+        //Checking and updating Like status
+        
+        guard let count = post.likeCount else {
+            
+            return 
+            
+        }
+        
+        if count != 0 {
+            
+            likeCountButton.setTitle("\(count) Like", for: UIControlState.normal)
+            
+        } else {
+            
+            likeCountButton.setTitle("Like this first!", for: UIControlState.normal)
+            
+        }
         
     }
     
