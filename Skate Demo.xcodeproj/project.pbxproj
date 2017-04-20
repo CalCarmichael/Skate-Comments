@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896B1E9650CB003A85BE /* FeedViewController.swift */; };
 		9F34896F1E965687003A85BE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896E1E965687003A85BE /* Post.swift */; };
+		9F34961A1EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */; };
 		9F3EE3DC1E9D099000D0BC69 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3EE3DB1E9D099000D0BC69 /* User.swift */; };
 		9F4763691E93AE1E00D74370 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4763681E93AE1E00D74370 /* ProfileViewController.swift */; };
 		9F47636C1E93B42900D74370 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F47636B1E93B42900D74370 /* AuthService.swift */; };
@@ -43,6 +44,7 @@
 		483438A8696DFED5EDC6AD7C /* Pods_Skate_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skate_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F34896B1E9650CB003A85BE /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		9F34896E1E965687003A85BE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		9F3EE3DB1E9D099000D0BC69 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9F4763681E93AE1E00D74370 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9F47636B1E93B42900D74370 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				9FE47D781E9693830030E817 /* FeedTableViewCell.swift */,
 				9F54FBE81EA661C800CDAEA1 /* CommentTableViewCell.swift */,
+				9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				9F56A68B1E929BD900E8EDB9 /* SignInViewController.swift in Sources */,
 				9FB1086D1EA7C8C900AD5AF6 /* Post_CommentApi.swift in Sources */,
 				9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */,
+				9F34961A1EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				9F3EE3DC1E9D099000D0BC69 /* User.swift in Sources */,
 				9FB108671EA7C3A500AD5AF6 /* UserApi.swift in Sources */,
 				9FE94C181E796B75009B7B3F /* AppDelegate.swift in Sources */,

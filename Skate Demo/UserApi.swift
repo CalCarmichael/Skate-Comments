@@ -23,4 +23,17 @@ class UserApi {
         })
     }
     
+    //Query reference to the user on the database 
+    
+    var REF_CURRENT_USER: FIRDatabaseReference? {
+        guard let currentUser = FIRAuth.auth()?.currentUser else {
+            return nil
+        }
+        
+        return REF_USERS.child(currentUser.uid)
+        
+    }
+    
+    
+    
 }
