@@ -42,7 +42,12 @@ class FeedViewController: UIViewController {
         //PostApi retreiving posts from the database
         
         Api.Post.observePosts { (post) in
-            self.getUser(uid: post.uid!, completed: {
+            
+            guard let postId = post.uid else {
+                return
+            }
+            
+            self.getUser(uid: postId, completed: {
             
                 self.posts.append(post)
                 

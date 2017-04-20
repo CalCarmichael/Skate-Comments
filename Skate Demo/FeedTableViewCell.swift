@@ -56,7 +56,22 @@ class FeedTableViewCell: UITableViewCell {
             
         }
         
+        //User liking post and heart changing colour
         
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                print(snapshot)
+                if let _ = snapshot.value as? NSNull {
+                    self.likeImageView.image = UIImage(named: "Like")
+                } else {
+                    self.likeImageView.image = UIImage(named: "Like Filled")
+                }
+                
+            })
+            
+        }
+
         
     }
     
@@ -85,7 +100,42 @@ class FeedTableViewCell: UITableViewCell {
         commentView.addGestureRecognizer(tapGesture)
         commentView.isUserInteractionEnabled = true
         
+        let tapGestureForLikeImageView = UITapGestureRecognizer(target: self, action: #selector(self.likeImageView_TouchUpInside))
+        likeImageView.addGestureRecognizer(tapGestureForLikeImageView)
+        likeImageView.isUserInteractionEnabled = true
+        
     }
+    
+    //Like image when pressed sent to database
+    
+    func likeImageView_TouchUpInside() {
+
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                
+                if let _ = snapshot.value as? NSNull {
+                    
+                Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).setValue(true)
+                    
+                self.likeImageView.image = UIImage(named: "Like Filled")
+                    
+                } else {
+                    
+                    Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).removeValue()
+                    
+                    self.likeImageView.image = UIImage(named: "Like")
+                    
+                }
+                
+            })
+            
+        }
+
+        
+    }
+    
+    //Comment image to comment view
     
     func commentView_TouchUpInside() {
         print("touched")
