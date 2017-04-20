@@ -69,6 +69,7 @@ class FeedTableViewCell: UITableViewCell {
 
         })
        
+    
         Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
             snapshot in
             
