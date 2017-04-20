@@ -26,6 +26,8 @@ class FeedTableViewCell: UITableViewCell {
     
     var feedVC: FeedViewController?
     
+    var postRef: FIRDatabaseReference!
+    
     var post: Post? {
         didSet {
             
@@ -56,22 +58,21 @@ class FeedTableViewCell: UITableViewCell {
             
         }
         
-        //User liking post and heart changing colour
         
-        if let currentUser = FIRAuth.auth()?.currentUser {
-            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
-                snapshot in
-                print(snapshot)
-                if let _ = snapshot.value as? NSNull {
-                    self.likeImageView.image = UIImage(named: "Like")
-                } else {
-                    self.likeImageView.image = UIImage(named: "Like Filled")
-                }
-                
-            })
-            
-        }
-
+        updateLike(post: post!)
+        
+    }
+    
+    //Check if user has liked image before. If they have = like filled. If not = like
+    
+    func updateLike(post: Post) {
+        
+        print(post.isLiked)
+        
+        let imageName = post.likes == nil  || !post.isLiked! ? "Like" : "Like Filled"
+        
+        likeImageView.image = UIImage(named: imageName)
+        
         
     }
     
@@ -110,28 +111,51 @@ class FeedTableViewCell: UITableViewCell {
     
     func likeImageView_TouchUpInside() {
 
-        if let currentUser = FIRAuth.auth()?.currentUser {
-            Api.User.REF_USERS.child(currentUser.uid).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: {
-                snapshot in
+        postRef = Api.Post.REF_POSTS.child(post!.id!)
+        incrementLikes(forRef: postRef)
+        
+    }
+    
+    //Get the current post data on database, increase or decrease like data then push change to database
+    
+    func incrementLikes(forRef ref: FIRDatabaseReference) {
+        
+        ref.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
+            if var post = currentData.value as? [String : AnyObject], let uid = FIRAuth.auth()?.currentUser?.uid {
                 
-                if let _ = snapshot.value as? NSNull {
-                    
-                Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).setValue(true)
-                    
-                self.likeImageView.image = UIImage(named: "Like Filled")
-                    
+                print("value 1: \(currentData.value)")
+                
+                var likes: Dictionary<String, Bool>
+                likes = post["likes"] as? [String : Bool] ?? [:]
+                var likeCount = post["likeCount"] as? Int ?? 0
+                if let _ = likes[uid] {
+                    // Unstar the post and remove self from stars
+                    likeCount -= 1
+                    likes.removeValue(forKey: uid)
                 } else {
-                    
-                    Api.User.REF_USERS.child(currentUser.uid).child("likes").child(self.post!.id!).removeValue()
-                    
-                    self.likeImageView.image = UIImage(named: "Like")
-                    
+                    // Star the post and add self to stars
+                    likeCount += 1
+                    likes[uid] = true
                 }
+                post["likeCount"] = likeCount as AnyObject?
+                post["likes"] = likes as AnyObject?
                 
-            })
+                // Set value and report transaction success
+                currentData.value = post
+                
+                return FIRTransactionResult.success(withValue: currentData)
+            }
+            return FIRTransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
             
+            if let dict = snapshot?.value as? [String: Any] {
+                let post = Post .transformPostPhoto(dict: dict, key: snapshot!.key)
+                self.updateLike(post: post)
+            }
         }
-
         
     }
     

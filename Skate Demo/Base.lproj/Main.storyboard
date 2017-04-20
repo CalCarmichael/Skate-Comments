@@ -414,7 +414,7 @@
                                                         <constraint firstAttribute="height" constant="300" id="eCq-dc-gxH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like-50" highlightedImage="Dislike Filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="x7S-nk-354">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" highlightedImage="Like Filled" translatesAutoresizingMaskIntoConstraints="NO" id="x7S-nk-354">
                                                     <rect key="frame" x="15" y="381" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="ArR-ar-0Pj"/>
@@ -860,7 +860,8 @@
     <resources>
         <image name="Dislike Filled-50" width="50" height="50"/>
         <image name="Forward Punch-50" width="50" height="50"/>
-        <image name="Like-50" width="50" height="50"/>
+        <image name="Like" width="50" height="50"/>
+        <image name="Like Filled" width="50" height="50"/>
         <image name="Speech Bubble Filled-50" width="50" height="50"/>
         <image name="Speech Bubble-50" width="50" height="50"/>
         <image name="Upload Filled-50" width="50" height="50"/>
