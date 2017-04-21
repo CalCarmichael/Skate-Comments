@@ -100,7 +100,83 @@
             </objects>
             <point key="canvasLocation" x="2039" y="-1262"/>
         </scene>
-        <!--Profile-->
+        <!--View Controller-->
+        <scene sceneID="Xgt-cI-lvK">
+            <objects>
+                <viewController id="IlI-1Y-3Df" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gdn-WL-ERU"/>
+                        <viewControllerLayoutGuide type="bottom" id="IvC-Vh-7f1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oj8-la-myH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tg6-qv-RRF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="77" id="j0I-yF-rj1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="77"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0I-yF-rj1" id="3lH-2I-AiZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D7k-qv-ZjD">
+                                                    <rect key="frame" x="15" y="8" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="1Z3-sM-Eyl"/>
+                                                        <constraint firstAttribute="height" constant="60" id="BnW-X7-cwh"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulY-G6-41L">
+                                                    <rect key="frame" x="90" y="28" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axb-yf-fkX">
+                                                    <rect key="frame" x="260" y="23.5" width="100" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="Kkv-UH-Vyc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <state key="normal" title="Follow"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D7k-qv-ZjD" firstAttribute="top" secondItem="3lH-2I-AiZ" secondAttribute="top" constant="8" id="7ls-Lj-DQc"/>
+                                                <constraint firstItem="D7k-qv-ZjD" firstAttribute="leading" secondItem="3lH-2I-AiZ" secondAttribute="leading" constant="15" id="BoY-Kz-2oA"/>
+                                                <constraint firstItem="ulY-G6-41L" firstAttribute="centerY" secondItem="D7k-qv-ZjD" secondAttribute="centerY" id="Pqc-UH-d1E"/>
+                                                <constraint firstItem="Axb-yf-fkX" firstAttribute="centerY" secondItem="D7k-qv-ZjD" secondAttribute="centerY" id="QHY-Kw-Udi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Axb-yf-fkX" secondAttribute="trailing" constant="15" id="ezM-rL-FL4"/>
+                                                <constraint firstItem="ulY-G6-41L" firstAttribute="leading" secondItem="D7k-qv-ZjD" secondAttribute="trailing" constant="15" id="rgi-bC-BBU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tg6-qv-RRF" firstAttribute="top" secondItem="oj8-la-myH" secondAttribute="top" id="3c9-Ja-k48"/>
+                            <constraint firstAttribute="trailing" secondItem="tg6-qv-RRF" secondAttribute="trailing" id="HFj-Fd-r9X"/>
+                            <constraint firstItem="tg6-qv-RRF" firstAttribute="leading" secondItem="oj8-la-myH" secondAttribute="leading" id="pRm-ag-oRN"/>
+                            <constraint firstAttribute="bottom" secondItem="tg6-qv-RRF" secondAttribute="bottom" id="zSc-GR-QxJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agy-K3-YCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1552.8" y="1593.5532233883059"/>
+        </scene>
+        <!--Profile View Controller-->
         <scene sceneID="jGz-3m-xEb">
             <objects>
                 <viewController id="42j-Wr-x0U" customClass="ProfileViewController" customModule="Skate_Demo" customModuleProvider="target" sceneMemberID="viewController">
@@ -281,8 +357,13 @@
                             <constraint firstItem="mUK-Pi-ZAK" firstAttribute="leading" secondItem="dxn-az-lfA" secondAttribute="leading" id="t77-oQ-vA1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="jLV-yO-a4v">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="7bg-0C-vW1">
+                    <navigationItem key="navigationItem" id="jLV-yO-a4v">
+                        <barButtonItem key="leftBarButtonItem" image="Find User " id="OqU-Yz-wbL">
+                            <connections>
+                                <segue destination="IlI-1Y-3Df" kind="show" id="pcp-mG-5SH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="7bg-0C-vW1">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="logout_TouchUpInside:" destination="42j-Wr-x0U" id="eyd-FJ-ZpF"/>
@@ -295,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROi-mv-o81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552.8" y="944.97751124437787"/>
+            <point key="canvasLocation" x="1553" y="878"/>
         </scene>
         <!--Map-->
         <scene sceneID="ELH-JA-NI8">
@@ -362,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2Y-8a-euS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="1617"/>
+            <point key="canvasLocation" x="2540" y="879"/>
         </scene>
         <!--Save Spot -->
         <scene sceneID="IAR-fx-3SG">
@@ -429,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAP-SW-vWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3297" y="1617"/>
+            <point key="canvasLocation" x="2540" y="1594"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VAn-Vq-Lwj">
@@ -542,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPx-QQ-weB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3542" y="945"/>
+            <point key="canvasLocation" x="3542" y="878"/>
         </scene>
         <!--Feed-->
         <scene sceneID="RdJ-ES-oXm">
@@ -709,7 +790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wl3-lh-H2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4408.8000000000002" y="944.97751124437787"/>
+            <point key="canvasLocation" x="4409" y="878"/>
         </scene>
         <!--Comment Controller Scene-->
         <scene sceneID="84D-jg-7nn">
@@ -834,7 +915,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8X-J3-51h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5301.6000000000004" y="944.97751124437787"/>
+            <point key="canvasLocation" x="4409" y="1594"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="1nI-vT-hyW">
@@ -1030,6 +1111,7 @@
     </scenes>
     <resources>
         <image name="Dislike Filled-50" width="50" height="50"/>
+        <image name="Find User " width="25" height="25"/>
         <image name="Forward Punch-50" width="50" height="50"/>
         <image name="Like" width="50" height="50"/>
         <image name="Like Filled" width="50" height="50"/>

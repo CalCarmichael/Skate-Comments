@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         getUser()
         getUserPosts()
         
@@ -35,6 +36,11 @@ class ProfileViewController: UIViewController {
         Api.User.observeCurrentUser { (user) in
             
             self.user = user
+            
+            //Set title of the profile controller to that of username
+            
+            self.title = user.username
+            
             self.collectionView.reloadData()
             
         }
