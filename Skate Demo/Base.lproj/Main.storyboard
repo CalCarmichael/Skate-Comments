@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="2039" y="-1262"/>
         </scene>
-        <!--View Controller-->
+        <!--Discover User View Controller-->
         <scene sceneID="Xgt-cI-lvK">
             <objects>
-                <viewController id="IlI-1Y-3Df" sceneMemberID="viewController">
+                <viewController id="IlI-1Y-3Df" customClass="DiscoverUserViewController" customModule="Skate_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gdn-WL-ERU"/>
                         <viewControllerLayoutGuide type="bottom" id="IvC-Vh-7f1"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="77" id="j0I-yF-rj1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverUserTableViewCell" rowHeight="77" id="j0I-yF-rj1" customClass="DiscoverUserTableViewCell" customModule="Skate_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0I-yF-rj1" id="3lH-2I-AiZ">
@@ -159,8 +159,16 @@
                                                 <constraint firstItem="ulY-G6-41L" firstAttribute="leading" secondItem="D7k-qv-ZjD" secondAttribute="trailing" constant="15" id="rgi-bC-BBU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="Axb-yf-fkX" id="nf0-Mf-5RN"/>
+                                            <outlet property="nameLabel" destination="ulY-G6-41L" id="3Oa-Hy-oRf"/>
+                                            <outlet property="profileImage" destination="D7k-qv-ZjD" id="QBw-Tf-2jD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IlI-1Y-3Df" id="VE6-Yp-hgb"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,6 +179,9 @@
                             <constraint firstAttribute="bottom" secondItem="tg6-qv-RRF" secondAttribute="bottom" id="zSc-GR-QxJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="tg6-qv-RRF" id="4LZ-DP-Ee2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agy-K3-YCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -41,6 +41,20 @@ class UserApi {
         
     }
     
+    //Loading users in withinn Discover User
+    
+    func observeLoadUsers(completion: @escaping (User) -> Void) {
+        
+        REF_USERS.observe(.childAdded, with: {
+            snapshot in
+            if let dict = snapshot.value as? [String : Any] {
+                let user = User.transformUser(dict: dict)
+                completion(user)
+            }
+        })
+        
+    }
+    
     var CURRENT_USER: FIRUser? {
         if let currentUser = FIRAuth.auth()?.currentUser {
             return currentUser

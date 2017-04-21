@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9F2B1E501EAA0ECA006BB363 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E4F1EAA0ECA006BB363 /* PhotoCollectionViewCell.swift */; };
 		9F2B1E521EAA197E006BB363 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E511EAA197E006BB363 /* HelperService.swift */; };
+		9F2B1E571EAA2EB3006BB363 /* DiscoverUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E561EAA2EB3006BB363 /* DiscoverUserViewController.swift */; };
+		9F2B1E5B1EAA2EFA006BB363 /* DiscoverUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E5A1EAA2EFA006BB363 /* DiscoverUserTableViewCell.swift */; };
 		9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896B1E9650CB003A85BE /* FeedViewController.swift */; };
 		9F34896F1E965687003A85BE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896E1E965687003A85BE /* Post.swift */; };
 		9F34961A1EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */; };
@@ -47,6 +49,8 @@
 		483438A8696DFED5EDC6AD7C /* Pods_Skate_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skate_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2B1E4F1EAA0ECA006BB363 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F2B1E511EAA197E006BB363 /* HelperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
+		9F2B1E561EAA2EB3006BB363 /* DiscoverUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverUserViewController.swift; sourceTree = "<group>"; };
+		9F2B1E5A1EAA2EFA006BB363 /* DiscoverUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverUserTableViewCell.swift; sourceTree = "<group>"; };
 		9F34896B1E9650CB003A85BE /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		9F34896E1E965687003A85BE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 			name = Api;
 			sourceTree = "<group>";
 		};
+		9F2B1E5C1EAA30FC006BB363 /* Discover User */ = {
+			isa = PBXGroup;
+			children = (
+				9F2B1E561EAA2EB3006BB363 /* DiscoverUserViewController.swift */,
+			);
+			name = "Discover User";
+			sourceTree = "<group>";
+		};
 		9F34896D1E9650D9003A85BE /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +210,7 @@
 				9F54FBE81EA661C800CDAEA1 /* CommentTableViewCell.swift */,
 				9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */,
 				9F2B1E4F1EAA0ECA006BB363 /* PhotoCollectionViewCell.swift */,
+				9F2B1E5A1EAA2EFA006BB363 /* DiscoverUserTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -234,6 +247,7 @@
 				9F8D373A1E829BCE003E36CB /* Map */,
 				9F8D37391E8295DD003E36CB /* Side Bar Menu */,
 				9F47636A1E93AE2200D74370 /* Profile */,
+				9F2B1E5C1EAA30FC006BB363 /* Discover User */,
 				9F4763751E93F42A00D74370 /* Camera */,
 				9F34896D1E9650D9003A85BE /* Feed */,
 				9FE94C1B1E796B75009B7B3F /* Main.storyboard */,
@@ -378,8 +392,10 @@
 			files = (
 				9FB108651EA7BD9200AD5AF6 /* PostApi.swift in Sources */,
 				9F4763741E93DCCE00D74370 /* CameraViewController.swift in Sources */,
+				9F2B1E571EAA2EB3006BB363 /* DiscoverUserViewController.swift in Sources */,
 				9FE94C1A1E796B75009B7B3F /* ViewController.swift in Sources */,
 				9F56A68D1E929C8100E8EDB9 /* SignUpViewController.swift in Sources */,
+				9F2B1E5B1EAA2EFA006BB363 /* DiscoverUserTableViewCell.swift in Sources */,
 				9F9EAFA41E9E63BD00921147 /* SaveSpotViewController.swift in Sources */,
 				9FBCA91B1E7C470700ADE283 /* SideBarTableViewController.swift in Sources */,
 				9F54FBE51EA660AC00CDAEA1 /* CommentViewController.swift in Sources */,
