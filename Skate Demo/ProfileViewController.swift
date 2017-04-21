@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         getUser()
         getUserPosts()
         
@@ -82,12 +83,14 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        //Display posts at certain array index on corresponding row
+        let post = posts[indexPath.row]
+        cell.post = post
         return cell
     }
     
@@ -100,6 +103,24 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
         
         return headerViewCell
+    }
+    
+}
+
+//Creating the UI for the cells on profile page
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width / 3 , height: collectionView.frame.size.width / 3)
     }
     
 }
