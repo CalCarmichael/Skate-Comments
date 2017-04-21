@@ -40,6 +40,30 @@ class DiscoverUserTableViewCell: UITableViewCell {
             
         }
         
+     //   followButton.addTarget(self, action: #selector(self.followAction), for: UIControlEvents.touchUpInside)
+        
+        followButton.addTarget(self, action: #selector(self.unfollowAction), for: UIControlEvents.touchUpInside)
+        
+    }
+    
+    func followAction() {
+     
+        //Corresponding users - switch when pressing in corresponding list within database
+        
+        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.User.CURRENT_USER!.uid).setValue(true)
+        
+        Api.Follow.REF_FOLLOWING.child(Api.User.CURRENT_USER!.uid).child(user!.id!).setValue(true)
+        
+    }
+    
+    func unfollowAction() {
+        
+        //NSNull - removes the child from child list of parent node
+        
+        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.User.CURRENT_USER!.uid).setValue(NSNull())
+        
+        Api.Follow.REF_FOLLOWING.child(Api.User.CURRENT_USER!.uid).child(user!.id!).setValue(NSNull())
+        
     }
 
     override func awakeFromNib() {
