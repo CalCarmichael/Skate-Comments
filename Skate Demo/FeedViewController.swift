@@ -35,28 +35,51 @@ class FeedViewController: UIViewController {
     
     func loadPosts() {
         
-        //Activity loading animation start - then stops before reloading data
+        Api.Feed.observeFeed(withId: Api.User.CURRENT_USER!.uid) { (post) in
+            
+                        guard let postId = post.uid else {
+                            return
+                        }
+            
+                        self.getUser(uid: postId, completed: {
+            
+                            self.posts.append(post)
+            
+                            self.tableView.reloadData()
+                        
+                        })
+                    }
         
-        activityIndicatorView.startAnimating()
-        
-        //PostApi retreiving posts from the database
-        
-        Api.Post.observePosts { (post) in
+        Api.Feed.observeFeedRemoved(withId: Api.User.CURRENT_USER!.uid) { (key) in
             
-            guard let postId = post.uid else {
-                return
-            }
-            
-            self.getUser(uid: postId, completed: {
-            
-                self.posts.append(post)
-                
-                self.activityIndicatorView.stopAnimating()
-                
-                self.tableView.reloadData()
-            
-            })
+            print(key)
+       
         }
+
+
+//        
+//        //Activity loading animation start - then stops before reloading data
+//        
+//        activityIndicatorView.startAnimating()
+//        
+//        //PostApi retreiving posts from the database
+//        
+//        Api.Post.observePosts { (post) in
+//            
+//            guard let postId = post.uid else {
+//                return
+//            }
+//            
+//            self.getUser(uid: postId, completed: {
+//            
+//                self.posts.append(post)
+//                
+//                self.activityIndicatorView.stopAnimating()
+//                
+//                self.tableView.reloadData()
+//            
+//            })
+//        }
         
     }
     
