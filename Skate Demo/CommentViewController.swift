@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import ProgressHUD
 
 class CommentViewController: UIViewController {
@@ -140,7 +139,7 @@ class CommentViewController: UIViewController {
         let commentsReference = Api.Comment.REF_COMMENTS
         let newCommentId = commentsReference.childByAutoId().key
         let newCommentReference = commentsReference.child(newCommentId)
-        guard let currentUser = FIRAuth.auth()?.currentUser else {
+        guard let currentUser = Api.User.CURRENT_USER else {
             return
         }
         let currentUserId = currentUser.uid

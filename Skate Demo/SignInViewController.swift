@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import ProgressHUD
 
 class SignInViewController: UIViewController {
@@ -61,7 +60,9 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if FIRAuth.auth()?.currentUser != nil {
+        //Withiin UserApi
+        
+        if Api.User.CURRENT_USER != nil {
             
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
             

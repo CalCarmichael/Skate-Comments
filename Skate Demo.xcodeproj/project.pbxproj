@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F2B1E501EAA0ECA006BB363 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E4F1EAA0ECA006BB363 /* PhotoCollectionViewCell.swift */; };
+		9F2B1E521EAA197E006BB363 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B1E511EAA197E006BB363 /* HelperService.swift */; };
 		9F34896C1E9650CB003A85BE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896B1E9650CB003A85BE /* FeedViewController.swift */; };
 		9F34896F1E965687003A85BE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F34896E1E965687003A85BE /* Post.swift */; };
 		9F34961A1EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		483438A8696DFED5EDC6AD7C /* Pods_Skate_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skate_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2B1E4F1EAA0ECA006BB363 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		9F2B1E511EAA197E006BB363 /* HelperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
 		9F34896B1E9650CB003A85BE /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		9F34896E1E965687003A85BE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9F3496191EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,19 @@
 				BB0B8B619B04F5997E0BDF68 /* Pods-Skate Demo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F2B1E551EAA19C0006BB363 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				9FB108641EA7BD9200AD5AF6 /* PostApi.swift */,
+				9FB108661EA7C3A500AD5AF6 /* UserApi.swift */,
+				9FB108681EA7C59300AD5AF6 /* Api.swift */,
+				9FB1086C1EA7C8C900AD5AF6 /* Post_CommentApi.swift */,
+				9FB1086A1EA7C65300AD5AF6 /* CommentApi.swift */,
+				9F34961B1EA911F700D30285 /* userPostApi.swift */,
+			);
+			name = Api;
 			sourceTree = "<group>";
 		};
 		9F34896D1E9650D9003A85BE /* Feed */ = {
@@ -210,13 +225,9 @@
 			children = (
 				9FE94C171E796B75009B7B3F /* AppDelegate.swift */,
 				9F47636B1E93B42900D74370 /* AuthService.swift */,
+				9F2B1E511EAA197E006BB363 /* HelperService.swift */,
 				9F47636D1E93C00200D74370 /* Config.swift */,
-				9FB108641EA7BD9200AD5AF6 /* PostApi.swift */,
-				9FB108661EA7C3A500AD5AF6 /* UserApi.swift */,
-				9FB108681EA7C59300AD5AF6 /* Api.swift */,
-				9FB1086C1EA7C8C900AD5AF6 /* Post_CommentApi.swift */,
-				9FB1086A1EA7C65300AD5AF6 /* CommentApi.swift */,
-				9F34961B1EA911F700D30285 /* userPostApi.swift */,
+				9F2B1E551EAA19C0006BB363 /* Api */,
 				9FE47D7A1E96938E0030E817 /* Views */,
 				9F3489701E96568A003A85BE /* Model */,
 				9F63C05B1E8BB8A500E4E39B /* Login */,
@@ -376,6 +387,7 @@
 				9F34896F1E965687003A85BE /* Post.swift in Sources */,
 				9F47636C1E93B42900D74370 /* AuthService.swift in Sources */,
 				9F56A68B1E929BD900E8EDB9 /* SignInViewController.swift in Sources */,
+				9F2B1E521EAA197E006BB363 /* HelperService.swift in Sources */,
 				9FB1086D1EA7C8C900AD5AF6 /* Post_CommentApi.swift in Sources */,
 				9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */,
 				9F34961A1EA8FF2F00D30285 /* ProfileHeaderCollectionReusableView.swift in Sources */,

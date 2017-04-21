@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import ProgressHUD
 
 class CameraViewController: UIViewController {
@@ -56,7 +55,7 @@ class CameraViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
+    
     
     //Getting photo
     
@@ -77,27 +76,12 @@ class CameraViewController: UIViewController {
         ProgressHUD.show("Waiting...", interaction: false)
         if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
             
-            //Creating ID for photos users post
-            
-            let photoIdString = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference(forURL: Config.STORAGE_ROOT_REF).child("posts").child(photoIdString)
-            
-            storageRef.put(imageData, metadata: nil, completion: { (metadata, error) in
+            HelperService.uploadDataToServer(data: imageData, caption: captionTextView.text!, onSuccess: {
                 
-                if error != nil {
-                    ProgressHUD.showError(error!.localizedDescription)
-                    return
-                    
-                }
-                
-                //Send data to database
-                
-                let photoUrl = metadata?.downloadURL()?.absoluteString
-                self.sendDataToDatabase(photoUrl: photoUrl!)
-                
+                self.clearPost()
+                self.tabBarController?.selectedIndex = 3
                 
             })
-            
             
         } else {
             
@@ -110,47 +94,10 @@ class CameraViewController: UIViewController {
     //Cancel photo post
     
     @IBAction func remove_TouchUpInside(_ sender: Any) {
-    
-       clearPost()
-        handleImagePost()
-    
-    }
-
-    //Send data to database with unqiue post id
-    
-    func sendDataToDatabase(photoUrl: String) {
         
-        let ref = FIRDatabase.database().reference()
-        let postsReference = ref.child("posts")
-        let newPostId = postsReference.childByAutoId().key
-        let newPostReference = postsReference.child(newPostId)
-        guard let currentUser = FIRAuth.auth()?.currentUser else {
-            return
-        }
-            let currentUserId = currentUser.uid
-        newPostReference.setValue(["uid": currentUserId, "photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: {
-            (error, ref) in
-            
-            if error != nil {
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            
-            let userPostRef = Api.userPosts.REF_USER_POSTS.child(currentUserId).child(newPostId)
-            userPostRef.setValue(true, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    ProgressHUD.showError(error!.localizedDescription)
-                    return
-                }
-            })
-            
-            ProgressHUD.showSuccess("Success")
-            
-            self.clearPost()
-            self.tabBarController?.selectedIndex = 3
-            
-        })
-    
+        clearPost()
+        handleImagePost()
+        
     }
     
     func clearPost() {

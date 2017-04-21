@@ -41,6 +41,15 @@ class UserApi {
         
     }
     
+    var CURRENT_USER: FIRUser? {
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            return currentUser
+        }
+        
+        return nil
+        
+    }
+    
     //Query reference to the user on the database 
     
     var REF_CURRENT_USER: FIRDatabaseReference? {

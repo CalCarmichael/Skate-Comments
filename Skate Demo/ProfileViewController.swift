@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import ProgressHUD
 
 class ProfileViewController: UIViewController {
     
@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getUserPosts() {
-        guard let currentUser = FIRAuth.auth()?.currentUser else {
+        guard let currentUser = Api.User.CURRENT_USER else {
             return
         }
         Api.userPosts.REF_USER_POSTS.child(currentUser.uid).observe(.childAdded, with: {
@@ -51,7 +51,6 @@ class ProfileViewController: UIViewController {
             
             Api.Post.observePost(withId: snapshot.key, completion: {
                 post in
-                print(post.id)
                 self.posts.append(post)
                 self.collectionView.reloadData()
                 
@@ -60,21 +59,17 @@ class ProfileViewController: UIViewController {
         })
     }
     
+    //Logout function. Also within AuthService
     
     @IBAction func logout_TouchUpInside(_ sender: Any) {
-        do {
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(signInVC, animated: true, completion: nil)
             
-            try FIRAuth.auth()?.signOut()
-            
-        } catch let logoutError {
-            print(logoutError)
+        }) { (errorMessage) in
+            ProgressHUD.showError(errorMessage)
         }
-        
-        //When logging out send back to the sign in view controller
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signInVC, animated: true, completion: nil)
         
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import ProgressHUD
 
 class FeedTableViewCell: UITableViewCell {
     
@@ -25,8 +25,6 @@ class FeedTableViewCell: UITableViewCell {
     //Created an instance variable
     
     var feedVC: FeedViewController?
-    
-    var postRef: FIRDatabaseReference!
     
     var post: Post? {
         didSet {
@@ -60,24 +58,15 @@ class FeedTableViewCell: UITableViewCell {
 
         //Observing the like button being changed and updating from other users
         
-        Api.Post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String: Any] {
-                let post = Post .transformPostPhoto(dict: dict, key: snapshot.key)
-                self.updateLike(post: post)
-            }
-
-        })
-       
+       Api.Post.observePost(withId: post!.id!) { (post) in
+        self.updateLike(post: post)
+        }
     
-        Api.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: {
-            snapshot in
-            
-            if let value = snapshot.value as? Int {
-                self.likeCountButton.setTitle("\(value) Like", for: UIControlState.normal)
-            }
-            
-        })
+        //Observing likes given the id of the post
+        
+        Api.Post.observeLikeCount(withPostId: post!.id!) { (value) in
+            self.likeCountButton.setTitle("\(value) Like", for: UIControlState.normal)
+        }
         
         
     }
@@ -141,57 +130,21 @@ class FeedTableViewCell: UITableViewCell {
         
     }
     
+    
     //Like image when pressed sent to database
     
     func likeImageView_TouchUpInside() {
-
-        postRef = Api.Post.REF_POSTS.child(post!.id!)
-        incrementLikes(forRef: postRef)
         
-    }
-    
-    //Get the current post data on database, increase or decrease like data then push change to database
-    
-    func incrementLikes(forRef ref: FIRDatabaseReference) {
-        
-        ref.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
-            if var post = currentData.value as? [String : AnyObject], let uid = FIRAuth.auth()?.currentUser?.uid {
-                
-                print("value 1: \(currentData.value)")
-                
-                var likes: Dictionary<String, Bool>
-                likes = post["likes"] as? [String : Bool] ?? [:]
-                var likeCount = post["likeCount"] as? Int ?? 0
-                if let _ = likes[uid] {
-                    // Unstar the post and remove self from stars
-                    likeCount -= 1
-                    likes.removeValue(forKey: uid)
-                } else {
-                    // Star the post and add self to stars
-                    likeCount += 1
-                    likes[uid] = true
-                }
-                post["likeCount"] = likeCount as AnyObject?
-                post["likes"] = likes as AnyObject?
-                
-                // Set value and report transaction success
-                currentData.value = post
-                
-                return FIRTransactionResult.success(withValue: currentData)
-            }
-            return FIRTransactionResult.success(withValue: currentData)
-        }) { (error, committed, snapshot) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            if let dict = snapshot?.value as? [String: Any] {
-                let post = Post .transformPostPhoto(dict: dict, key: snapshot!.key)
-                self.updateLike(post: post)
-            }
+        Api.Post.incrementLikes(postId: post!.id!, onSuccess: { (post) in
+            self.updateLike(post: post)
+        }) { (errorMessage) in
+            ProgressHUD.showError(errorMessage)
         }
         
+        //incrementLikes(forRef: postRef)
+        
     }
+    
     
     //Comment image to comment view
     
