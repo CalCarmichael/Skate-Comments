@@ -15,6 +15,8 @@ class User {
     var profileImageUrl: String?
     var username: String?
     var id: String?
+    var isFollowing: Bool?
+    
 
 }
 

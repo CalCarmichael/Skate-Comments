@@ -40,29 +40,63 @@ class DiscoverUserTableViewCell: UITableViewCell {
             
         }
         
-     //   followButton.addTarget(self, action: #selector(self.followAction), for: UIControlEvents.touchUpInside)
+        //Check if current user is following
         
-        followButton.addTarget(self, action: #selector(self.unfollowAction), for: UIControlEvents.touchUpInside)
+        if user!.isFollowing! {
+            
+            configureUnFollowButton()
+            
+        } else {
+            
+            configureFollowButton()
+        
+        }
         
     }
+        
+        func configureFollowButton() {
+            
+            followButton.layer.borderWidth = 1
+            followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
+            followButton.layer.cornerRadius = 5
+            followButton.clipsToBounds = true
+            followButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+            followButton.backgroundColor = UIColor(red: 69/255, green: 142/255, blue: 255/255, alpha: 1)
+            
+            followButton.setTitle("Follow", for: UIControlState.normal)
+            followButton.addTarget(self, action: #selector(self.followAction), for: UIControlEvents.touchUpInside)
+            
+            
+        }
+        
+        func configureUnFollowButton() {
+            
+            followButton.layer.borderWidth = 1
+            followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
+            followButton.layer.cornerRadius = 5
+            followButton.clipsToBounds = true
+            followButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+            followButton.backgroundColor = UIColor(red: 66/255, green: 244/255, blue: 75/255, alpha: 1)
+            
+            followButton.setTitle("Following", for: UIControlState.normal)
+            followButton.addTarget(self, action: #selector(self.unfollowAction), for: UIControlEvents.touchUpInside)
+            
+        }
+    
+    
+    //followAction and unfollowAction within FollowApi
     
     func followAction() {
-     
-        //Corresponding users - switch when pressing in corresponding list within database
         
-        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.User.CURRENT_USER!.uid).setValue(true)
-        
-        Api.Follow.REF_FOLLOWING.child(Api.User.CURRENT_USER!.uid).child(user!.id!).setValue(true)
+        Api.Follow.followAction(withUser: user!.id!)
+        configureUnFollowButton()
         
     }
     
     func unfollowAction() {
         
-        //NSNull - removes the child from child list of parent node
-        
-        Api.Follow.REF_FOLLOWERS.child(user!.id!).child(Api.User.CURRENT_USER!.uid).setValue(NSNull())
-        
-        Api.Follow.REF_FOLLOWING.child(Api.User.CURRENT_USER!.uid).child(user!.id!).setValue(NSNull())
+        Api.Follow.unfollowAction(withUser: user!.id!)
+        configureFollowButton()
         
     }
 
