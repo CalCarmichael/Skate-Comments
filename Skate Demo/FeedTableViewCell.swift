@@ -58,18 +58,14 @@ class FeedTableViewCell: UITableViewCell {
 
         //Observing the like button being changed and updating from other users
         
-       Api.Post.observePost(withId: post!.id!) { (post) in
-        self.updateLike(post: post)
-        }
+        self.updateLike(post: self.post!)
+        
+    }
+    
     
         //Observing likes given the id of the post
         
-        Api.Post.observeLikeCount(withPostId: post!.id!) { (value) in
-            self.likeCountButton.setTitle("\(value) Like", for: UIControlState.normal)
-        }
-        
-        
-    }
+      
     
     //Check if user has liked image before. If they have = like filled. If not = like
     
@@ -137,6 +133,9 @@ class FeedTableViewCell: UITableViewCell {
         
         Api.Post.incrementLikes(postId: post!.id!, onSuccess: { (post) in
             self.updateLike(post: post)
+            self.post?.likes = post.likes
+            self.post?.isLiked = post.isLiked
+            self.post?.likeCount = post.likeCount
         }) { (errorMessage) in
             ProgressHUD.showError(errorMessage)
         }

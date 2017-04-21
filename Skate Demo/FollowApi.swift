@@ -17,6 +17,20 @@ class FollowApi {
     
     func followAction(withUser id: String) {
         
+        Api.userPosts.REF_USER_POSTS.child(id).observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            if let dict = snapshot.value as? [String: Any] {
+                
+                for key in dict.keys {
+                    
+                    //Creates "feed" node and stores key of the post that showed up in news feed of current user
+                    
+                    FIRDatabase.database().reference().child("feed").child(Api.User.CURRENT_USER!.uid).child(key).setValue(true)
+                }
+            }
+        })
+        
         //Corresponding users - switch when pressing in corresponding list within database
         
        REF_FOLLOWERS.child(id).child(Api.User.CURRENT_USER!.uid).setValue(true)

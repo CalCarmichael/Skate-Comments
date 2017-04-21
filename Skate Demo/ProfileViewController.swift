@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
             
             //Set title of the profile controller to that of username
             
-            self.title = user.username
+            self.navigationItem.title = user.username
             
             self.collectionView.reloadData()
             

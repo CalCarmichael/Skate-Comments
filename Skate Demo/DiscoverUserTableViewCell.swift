@@ -42,19 +42,23 @@ class DiscoverUserTableViewCell: UITableViewCell {
         
         //Check if current user is following
         
+        
+        
         if user!.isFollowing! {
-            
+        
             configureUnFollowButton()
-            
+
         } else {
-            
+        
             configureFollowButton()
         
         }
         
     }
-        
+    
         func configureFollowButton() {
+            
+            //UI Button
             
             followButton.layer.borderWidth = 1
             followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
@@ -70,6 +74,8 @@ class DiscoverUserTableViewCell: UITableViewCell {
         }
         
         func configureUnFollowButton() {
+            
+            //UI Button
             
             followButton.layer.borderWidth = 1
             followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
@@ -88,16 +94,28 @@ class DiscoverUserTableViewCell: UITableViewCell {
     
     func followAction() {
         
-        Api.Follow.followAction(withUser: user!.id!)
-        configureUnFollowButton()
+        
+        if user!.isFollowing! == false {
+            
+            Api.Follow.followAction(withUser: user!.id!)
+            configureUnFollowButton()
+            
+            user!.isFollowing! = true
+        }
+        
         
     }
     
     func unfollowAction() {
         
-        Api.Follow.unfollowAction(withUser: user!.id!)
-        configureFollowButton()
-        
+        if user!.isFollowing! == true {
+            
+            Api.Follow.unfollowAction(withUser: user!.id!)
+            configureFollowButton()
+            
+            user!.isFollowing! = false
+            
+        }
     }
 
     override func awakeFromNib() {

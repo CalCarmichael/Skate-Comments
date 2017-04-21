@@ -58,6 +58,10 @@ class HelperService {
                 return
             }
             
+            //Once post registered store it in feed corresponding to current user. newPostId creates new node
+            
+            FIRDatabase.database().reference().child("feed").child(Api.User.CURRENT_USER!.uid).child(newPostId).setValue(true)
+            
             let userPostRef = Api.userPosts.REF_USER_POSTS.child(currentUserId).child(newPostId)
             userPostRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
