@@ -47,6 +47,19 @@ class DiscoverUserViewController: UIViewController {
         Api.Follow.isFollowing(userId: userId, completed: completed)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ViewingProfileSegue" {
+            
+            let userProfileVC = segue.destination as! UserViewProfileViewController
+            
+            let userId = sender as! String
+            
+            userProfileVC.userId = userId
+        }
+        
+    }
 
 }
 
@@ -71,6 +84,8 @@ extension DiscoverUserViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         
         cell.user = user
+        
+        cell.userProfileVC = self
         
         return cell
     }

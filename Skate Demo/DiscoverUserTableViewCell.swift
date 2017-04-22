@@ -16,6 +16,8 @@ class DiscoverUserTableViewCell: UITableViewCell {
     
     @IBOutlet weak var followButton: UIButton!
     
+    var userProfileVC: UserViewProfileViewController?
+    
     var user: User? {
         didSet {
             updateView()
@@ -120,7 +122,23 @@ class DiscoverUserTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        //Tapping username gesture. Takes to UserViewProfile
+       
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.nameLabel_TouchUpInside))
+        nameLabel.addGestureRecognizer(tapGesture)
+        nameLabel.isUserInteractionEnabled = true
+        
+    }
+    
+    func nameLabel_TouchUpInside() {
+        
+        if let id = user?.id {
+            
+            userProfileVC?.performSegue(withIdentifier: "ViewingProfileSegue", sender: id)
+            
+        }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
