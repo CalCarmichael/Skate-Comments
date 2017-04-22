@@ -899,6 +899,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5q9-RR-hm2" id="3ln-vu-EW4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -909,6 +912,9 @@
                             <constraint firstItem="gab-a9-npC" firstAttribute="leading" secondItem="QfK-19-d3M" secondAttribute="leading" id="mCy-Sc-Med"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="gab-a9-npC" id="vhf-Iq-wm7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pfv-0B-Ntb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

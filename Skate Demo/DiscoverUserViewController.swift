@@ -44,8 +44,6 @@ class DiscoverUserViewController: UIViewController {
     
     func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
         
-        //
-        
         Api.Follow.isFollowing(userId: userId, completed: completed)
         
     }

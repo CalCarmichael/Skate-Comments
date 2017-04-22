@@ -11,7 +11,11 @@ import UIKit
 class SearchViewController: UIViewController {
     
     var searchBar = UISearchBar()
-
+    var users: [User] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +30,44 @@ class SearchViewController: UIViewController {
         let searchItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = searchItem
         
+        searchUser()
+        
+    }
+    
+    func searchUser() {
+        
+        if let searchText = searchBar.text?.lowercased() {
+            
+            //Remove old search results so only new searched users shown
+            
+            self.users.removeAll()
+            self.tableView.reloadData()
+            
+            Api.User.queryUsers(withText: searchText, completion: { (user) in
+                
+                //Check if queried user if followed/unfollowed by current user
+                
+                self.isFollowing(userId: user.id!, completed: { (value) in
+                    
+                    user.isFollowing = value
+                    
+                    self.users.append(user)
+                    self.tableView.reloadData()
+                    
+                })
+                
+            })
+            
+        }
+        
+    }
+        
+    //Are the users followed/unfollowed by current user
+    
+    func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
+        
+        Api.Follow.isFollowing(userId: userId, completed: completed)
+        
     }
     
 }
@@ -35,14 +77,42 @@ extension SearchViewController: UISearchBarDelegate {
     //Handle search requests after search button clicked (self explanitory)
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(searchBar.text)
+        searchUser()
         
     }
     
     //Register what users type in so I can query it later on
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text)
+        searchUser()
     }
     
 }
+
+extension SearchViewController: UITableViewDataSource {
+    
+    //Rows in table view - returning users
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return users.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Reuses the cells shown rather than uploading all of them at once
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverUserTableViewCell", for: indexPath) as! DiscoverUserTableViewCell
+        
+        //Extracting the user object from user array
+        
+        let user = users[indexPath.row]
+        
+        cell.user = user
+        
+        return cell
+    }
+    
+}
+
