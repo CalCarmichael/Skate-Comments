@@ -38,6 +38,7 @@
 		9FBCA91D1E7C4B6700ADE283 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */; };
 		9FD9D0A31E79711600CE3FA4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD9D0A21E79711600CE3FA4 /* MapKit.framework */; };
 		9FDDF87F1EAB775B0010198D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDF87E1EAB775B0010198D /* SearchViewController.swift */; };
+		9FDDF8821EAB8CE50010198D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDF8811EAB8CE50010198D /* ExploreViewController.swift */; };
 		9FE47D791E9693830030E817 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE47D781E9693830030E817 /* FeedTableViewCell.swift */; };
 		9FE8253A1E796C33008E39C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FE825391E796C33008E39C4 /* GoogleService-Info.plist */; };
 		9FE94C181E796B75009B7B3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE94C171E796B75009B7B3F /* AppDelegate.swift */; };
@@ -81,6 +82,7 @@
 		9FBCA91C1E7C4B6700ADE283 /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		9FD9D0A21E79711600CE3FA4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9FDDF87E1EAB775B0010198D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9FDDF8811EAB8CE50010198D /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		9FE47D781E9693830030E817 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		9FE825391E796C33008E39C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FE94C141E796B75009B7B3F /* Skate Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skate Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,14 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		9FDDF8831EAB8CEE0010198D /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				9FDDF8811EAB8CE50010198D /* ExploreViewController.swift */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
 		9FE47D7A1E96938E0030E817 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +274,7 @@
 				9F8D37391E8295DD003E36CB /* Side Bar Menu */,
 				9F47636A1E93AE2200D74370 /* Profile */,
 				9FDDF8801EAB775E0010198D /* Search */,
+				9FDDF8831EAB8CEE0010198D /* Explore */,
 				9F2B1E5C1EAA30FC006BB363 /* Discover User */,
 				9F4763751E93F42A00D74370 /* Camera */,
 				9F34896D1E9650D9003A85BE /* Feed */,
@@ -431,6 +442,7 @@
 				9FB108671EA7C3A500AD5AF6 /* UserApi.swift in Sources */,
 				9FE94C181E796B75009B7B3F /* AppDelegate.swift in Sources */,
 				9F2B1E601EAA67D2006BB363 /* FeedApi.swift in Sources */,
+				9FDDF8821EAB8CE50010198D /* ExploreViewController.swift in Sources */,
 				9FE47D791E9693830030E817 /* FeedTableViewCell.swift in Sources */,
 				9FB1086B1EA7C65300AD5AF6 /* CommentApi.swift in Sources */,
 				9F54FBE91EA661C800CDAEA1 /* CommentTableViewCell.swift in Sources */,

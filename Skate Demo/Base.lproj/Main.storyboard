@@ -806,10 +806,10 @@
             </objects>
             <point key="canvasLocation" x="4409" y="878"/>
         </scene>
-        <!--Search-->
+        <!--Explore-->
         <scene sceneID="WeL-PL-AFs">
             <objects>
-                <viewController id="6Gc-Z7-vM8" userLabel="Search" sceneMemberID="viewController">
+                <viewController id="6Gc-Z7-vM8" customClass="ExploreViewController" customModule="Skate_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T2r-Sw-C7h"/>
                         <viewControllerLayoutGuide type="bottom" id="LMW-rJ-LXo"/>
@@ -817,7 +817,49 @@
                     <view key="view" contentMode="scaleToFill" id="8ly-P7-2DR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HWe-hA-0o9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i74-Lj-NSn">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExploreCollectionViewCell" id="otT-ty-KdK" customClass="PhotoCollectionViewCell" customModule="Skate_Demo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4HP-s4-KyW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="4HP-s4-KyW" secondAttribute="bottom" id="Pcu-MT-f0N"/>
+                                            <constraint firstAttribute="trailing" secondItem="4HP-s4-KyW" secondAttribute="trailing" id="Tej-cb-1Eq"/>
+                                            <constraint firstItem="4HP-s4-KyW" firstAttribute="top" secondItem="otT-ty-KdK" secondAttribute="top" id="ZDk-S5-OT1"/>
+                                            <constraint firstItem="4HP-s4-KyW" firstAttribute="leading" secondItem="otT-ty-KdK" secondAttribute="leading" id="boL-uy-hra"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="Photo" destination="4HP-s4-KyW" id="6aN-nY-MQj"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HWe-hA-0o9" firstAttribute="top" secondItem="8ly-P7-2DR" secondAttribute="top" id="5b1-kG-nJ6"/>
+                            <constraint firstItem="HWe-hA-0o9" firstAttribute="leading" secondItem="8ly-P7-2DR" secondAttribute="leading" id="n5H-Sn-Q1j"/>
+                            <constraint firstAttribute="bottom" secondItem="HWe-hA-0o9" secondAttribute="bottom" id="tXH-bX-Nme"/>
+                            <constraint firstAttribute="trailing" secondItem="HWe-hA-0o9" secondAttribute="trailing" id="x3V-Oc-Fa3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="9yu-Gl-fxc">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="Szz-N3-lQ4">
@@ -826,6 +868,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="exploreCollectionView" destination="HWe-hA-0o9" id="w5e-Yc-oCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWa-AH-5hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

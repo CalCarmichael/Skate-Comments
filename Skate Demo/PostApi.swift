@@ -55,6 +55,35 @@ class PostApi {
         
     }
     
+    func observePopularPosts(completion: @escaping (Post) -> Void) {
+        
+        //Explore post data sorted on like count - the higher likes the highers its up
+        
+        REF_POSTS.queryOrdered(byChild: "likeCount").observeSingleEvent(of: .value, with: {
+            
+            snapshot in
+            
+       //For Loop
+            
+            //Convert entire array into array of Firebase snapshots
+            
+            let arraySnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            
+            for child in arraySnapshot {
+                
+                if let dict = child.value as? [String : Any] {
+                    
+                    let post = Post.transformPostPhoto(dict: dict, key: snapshot.key)
+                    
+                    completion(post)
+
+                }
+            }
+            
+        })
+        
+    }
+    
     //Get the current post data on database, increase or decrease like data then push change to database
     
     func incrementLikes(postId: String, onSuccess: @escaping (Post) -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
