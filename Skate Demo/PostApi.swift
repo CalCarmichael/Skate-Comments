@@ -67,18 +67,19 @@ class PostApi {
             
             //Convert entire array into array of Firebase snapshots
             
-            let arraySnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            let arraySnapshot = (snapshot.children.allObjects as! [FIRDataSnapshot]).reversed()
             
-            for child in arraySnapshot {
+            arraySnapshot.forEach({ (child) in
                 
                 if let dict = child.value as? [String : Any] {
                     
                     let post = Post.transformPostPhoto(dict: dict, key: snapshot.key)
                     
                     completion(post)
-
+                    
                 }
-            }
+                
+            })
             
         })
         

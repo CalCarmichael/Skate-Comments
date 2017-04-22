@@ -24,7 +24,17 @@ class ExploreViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadPopularPosts()
+        
+    }
+    
+    
     func loadPopularPosts() {
+        
+        self.posts.removeAll()
         
         Api.Post.observePopularPosts { (post) in
             
