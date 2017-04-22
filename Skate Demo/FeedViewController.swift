@@ -52,24 +52,14 @@ class FeedViewController: UIViewController {
         
         Api.Feed.observeFeedRemoved(withId: Api.User.CURRENT_USER!.uid) { (key) in
             
-            Api.Post.observePost(withId: key, completion: { (post) in
-                
-                self.users = self.users.filter { $0.id != post.uid }
-                
                 self.posts = self.posts.filter { $0.id != key }
                 
                 self.tableView.reloadData()
-            })
-            
-//            //$0 for array argument. Post id compares with key considered.
-//            
-//            self.posts = self.posts.filter { $0.id != key }
-//            
-//            self.tableView.reloadData()
-            
-        }
+            }
         
     }
+    
+
     
     func getUser(uid: String, completed: @escaping () -> Void) {
         

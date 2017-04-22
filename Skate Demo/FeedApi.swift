@@ -17,7 +17,7 @@ class FeedApi {
     
     func observeFeed(withId id: String, completion: @escaping (Post) -> Void) {
         
-        REF_FEED.child(id).observeSingleEvent(of: .childAdded, with: {
+        REF_FEED.child(id).observe(.childAdded, with: {
             
             snapshot in
             
