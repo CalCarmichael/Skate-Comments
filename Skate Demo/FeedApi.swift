@@ -36,7 +36,7 @@ class FeedApi {
     
     //Return the posts that were just removed after the unfollow action 
     
-    func observeFeedRemoved(withId id: String, completion: @escaping (String) -> Void) {
+    func observeFeedRemoved(withId id: String, completion: @escaping (Post) -> Void) {
         
         REF_FEED.child(id).observe(.childRemoved, with: {
             
@@ -44,7 +44,13 @@ class FeedApi {
             
             let key = snapshot.key
             
-            completion(key)
+    //Query a post with id specified by the key input and return post object in completion closure
+            
+            Api.Post.observePost(withId: key, completion: { (post) in
+                
+                completion(post)
+                
+            })
             
         })
         

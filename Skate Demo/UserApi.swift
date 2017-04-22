@@ -49,7 +49,15 @@ class UserApi {
             snapshot in
             if let dict = snapshot.value as? [String : Any] {
                 let user = User.transformUser(dict: dict, key: snapshot.key)
-                completion(user)
+                
+                //Only return user in following page who arent current user
+                
+                if user.id! != Api.User.CURRENT_USER?.uid {
+                    
+                    completion(user)
+                    
+                }
+                
             }
         })
         
